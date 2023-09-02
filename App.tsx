@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from "react-native";
+import LectureApp, { styles } from "./LectureApp";
+
+/**
+ * DO NOT MODIFY THIS FILE
+ */
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={[appStyles.safeArea, styles.topLevelContainer]}>
+      <LectureApp />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
+const appStyles = StyleSheet.create({
+  safeArea: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 60,
+    paddingBottom: 20,
   },
 });
