@@ -13,37 +13,32 @@ import {
 } from "react-native";
 
 export default function LectureApp() {
-  const birdLabel = useRef("");
-  const labelInput = useRef<TextInput>(null);
-  const [birdText, setBirdText] = useState("No birds here.");
+  const [birdInputText, setBirdInputText] = useState("");
+  const [birdText, setBirdText] = useState("No birds here yet.");
   const [submissions, setSubmissions] = useState(0);
   const [cancelations, setCancelations] = useState(0);
 
   const handleCancel = () => {
-    if (labelInput.current) {
-      labelInput.current.clear();
-    }
+    setBirdInputText("");
     Keyboard.dismiss();
     setCancelations(cancelations + 1);
   };
 
   const handleSubmit = () => {
     setSubmissions(submissions + 1);
-    const newBirds = birdLabel.current.trim();
-    if (newBirds.length > 0) {
-      if (birdText == "No birds here.") {
-        setBirdText(newBirds);
+    const newBird = birdInputText.trim();
+    if (newBird.length > 0) {
+      if (birdText == "No birds here yet.") {
+        setBirdText("- " + newBird);
       } else {
-        setBirdText(birdText + "\n" + newBirds);
+        setBirdText(birdText + "\n- " + newBird);
       }
-      if (labelInput.current) {
-        labelInput.current.clear();
-      }
+      setBirdInputText("");
     }
   };
 
   const handleLabelChange = (text: string) => {
-    birdLabel.current = text;
+    setBirdInputText(text);
   };
 
   return (
@@ -65,7 +60,7 @@ export default function LectureApp() {
           <Text style={styles.labelText}>Name your bird:</Text>
           <TextInput
             style={styles.input}
-            ref={labelInput}
+            value={birdInputText}
             onChangeText={handleLabelChange}
             onSubmitEditing={handleSubmit}
             blurOnSubmit={false}
@@ -87,15 +82,15 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   input: {
+    fontSize: 18,
     flex: 1,
     borderWidth: 1,
+    padding: 3,
   },
   scrollContainer: {
     flex: 1,
     alignSelf: "flex-start",
     width: "100%",
-    // borderWidth: 1,
-    // borderColor: "pink",
   },
   titleText: {
     fontSize: 30,
@@ -104,7 +99,7 @@ export const styles = StyleSheet.create({
     fontSize: 20,
   },
   labelText: {
-    fontSize: 16,
+    fontSize: 18,
   },
   horzContainer: {
     flexDirection: "row",
