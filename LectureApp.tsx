@@ -1,16 +1,17 @@
 import { StatusBar } from "expo-status-bar";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import {
   Button,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  StyleSheet,
-  Text,
   TextInput,
   View,
 } from "react-native";
+
+import styles from "./styles";
+import { FlexFill, LabelText, SubtitleText, TitleText } from "./Shared";
 
 export default function LectureApp() {
   const [birdInputText, setBirdInputText] = useState("");
@@ -47,17 +48,17 @@ export default function LectureApp() {
       style={styles.avoidingView}
     >
       <View style={styles.container}>
-        <Text style={styles.titleText}>Lecture Base Repo</Text>
-        <Text style={styles.subTitleText}>A decent place to start</Text>
+        <TitleText>Lecture Base Repo</TitleText>
+        <SubtitleText>A decent place to start</SubtitleText>
         <ScrollView style={styles.scrollContainer}>
-          <Text style={styles.labelText}>{birdText}</Text>
+          <LabelText>{birdText}</LabelText>
         </ScrollView>
-        <Text style={styles.labelText}>
+        <LabelText>
           You have submitted {submissions} time(s) and canceled {cancelations}{" "}
           time(s).
-        </Text>
+        </LabelText>
         <View style={styles.horzContainer}>
-          <Text style={styles.labelText}>Name your bird:</Text>
+          <LabelText>Name your bird:</LabelText>
           <TextInput
             style={styles.input}
             value={birdInputText}
@@ -68,7 +69,7 @@ export default function LectureApp() {
         </View>
         <View style={styles.horzContainer}>
           <Button title="Cancel" onPress={handleCancel} />
-          <View style={styles.flexFill} />
+          <FlexFill />
           <Button title="Submit" onPress={handleSubmit} />
         </View>
         <StatusBar style="auto" />
@@ -76,48 +77,3 @@ export default function LectureApp() {
     </KeyboardAvoidingView>
   );
 }
-
-export const styles = StyleSheet.create({
-  flexFill: {
-    flex: 1,
-  },
-  input: {
-    fontSize: 18,
-    flex: 1,
-    borderWidth: 1,
-    padding: 3,
-  },
-  scrollContainer: {
-    flex: 1,
-    alignSelf: "flex-start",
-    width: "100%",
-  },
-  titleText: {
-    fontSize: 30,
-  },
-  subTitleText: {
-    fontSize: 20,
-  },
-  labelText: {
-    fontSize: 18,
-  },
-  horzContainer: {
-    flexDirection: "row",
-    gap: 10,
-  },
-  topLevelContainer: {
-    // Add styles here to affect the outer App component
-    // or leave empty if you do not need to change it.
-  },
-  avoidingView: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 10,
-    gap: 5,
-  },
-});

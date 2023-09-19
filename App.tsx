@@ -1,9 +1,6 @@
 import { StyleSheet, View } from "react-native";
-import LectureApp, { styles } from "./LectureApp";
-
-/**
- * DO NOT MODIFY THIS FILE
- */
+import LectureApp from "./LectureApp";
+import styles from "./styles";
 
 export default function App() {
   return (
