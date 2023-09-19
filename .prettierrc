@@ -1,5 +1,6 @@
 {
     "tabWidth": 2,
+    "printWidth": 70,
     "useTabs": false,
     "singleQuote": false,
     "editor.formatOnSave": true,

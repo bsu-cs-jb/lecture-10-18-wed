@@ -1,5 +1,8 @@
 export function rand(n = 2) {
-  return (Math.random() * 10 ** n).toFixed().toString().padStart(2, "0");
+  return (Math.random() * 10 ** n)
+    .toFixed()
+    .toString()
+    .padStart(2, "0");
 }
 
 export function ts(
@@ -8,7 +11,12 @@ export function ts(
     minutes,
     seconds,
     ms,
-  }: { hours: boolean; minutes: boolean; seconds: boolean; ms: boolean } = {
+  }: {
+    hours: boolean;
+    minutes: boolean;
+    seconds: boolean;
+    ms: boolean;
+  } = {
     hours: false,
     minutes: false,
     seconds: true,

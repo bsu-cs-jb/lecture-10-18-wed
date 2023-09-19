@@ -11,7 +11,12 @@ import {
 } from "react-native";
 
 import styles from "./styles";
-import { FlexFill, LabelText, SubtitleText, TitleText } from "./Shared";
+import {
+  FlexFill,
+  LabelText,
+  SubtitleText,
+  TitleText,
+} from "./Shared";
 
 export default function LectureApp() {
   const [birdInputText, setBirdInputText] = useState("");
@@ -54,8 +59,8 @@ export default function LectureApp() {
           <LabelText>{birdText}</LabelText>
         </ScrollView>
         <LabelText>
-          You have submitted {submissions} time(s) and canceled {cancelations}{" "}
-          time(s).
+          You have submitted {submissions} time(s) and canceled{" "}
+          {cancelations} time(s).
         </LabelText>
         <View style={styles.horzContainer}>
           <LabelText>Name your bird:</LabelText>
