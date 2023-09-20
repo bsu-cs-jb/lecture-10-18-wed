@@ -4,14 +4,12 @@ import {
   LabelText,
   LctAvoidingView,
   LctHorzContainer,
-  LctView,
-  RenderHighlightView,
   TitleText,
 } from "./Shared";
 import styles from "./styles";
 import { useState } from "react";
 
-export function RenderApp1() {
+export default function RenderApp1() {
   const [name, setName] = useState("Barney");
 
   const changeNameTo = name == "Barney" ? "Suzie" : "Barney";
@@ -27,7 +25,7 @@ export function RenderApp1() {
     <LctAvoidingView style={styles.container}>
       <TitleText>Render App 1</TitleText>
       <FlexFill />
-      <LabelText>{name}</LabelText>
+      <LabelText>Name: {name}</LabelText>
       <LctHorzContainer>
         <LabelText>Set name to:</LabelText>
         <Button title={changeNameTo} onPress={handleChangName} />

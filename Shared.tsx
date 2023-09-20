@@ -67,7 +67,7 @@ export function LctView({ children, ...props }: ViewProps) {
   );
 }
 
-function useRenderHighlight() {
+function useRenderHighlight(delay: number = 750) {
   const [showHighlight, setShowHighlight] = useState(true);
   const fromInterval = useRef(false);
   if (!fromInterval.current && !showHighlight) {
@@ -90,7 +90,7 @@ function useRenderHighlight() {
       const id = setInterval(() => {
         fromInterval.current = true;
         setShowHighlight(false);
-      }, 750);
+      }, delay);
       return () => {
         clearInterval(id);
       };
