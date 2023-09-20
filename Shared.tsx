@@ -67,18 +67,10 @@ export function LctView({ children, ...props }: ViewProps) {
   );
 }
 
-export function RenderHighlightView({
-  children,
-  style,
-  ...props
-}: ViewProps) {
+function useRenderHighlight() {
   const [showHighlight, setShowHighlight] = useState(true);
   const fromInterval = useRef(false);
-  // console.log(
-  //   `showHighlight: ${showHighlight} fromInterval: ${fromInterval.current}`,
-  // );
   if (!fromInterval.current && !showHighlight) {
-    // console.log("show highlight again");
     setShowHighlight(true);
   }
   fromInterval.current = false;
@@ -96,7 +88,6 @@ export function RenderHighlightView({
   useEffect(() => {
     if (showHighlight) {
       const id = setInterval(() => {
-        // console.log(`setInterval(${ts()})`);
         fromInterval.current = true;
         setShowHighlight(false);
       }, 750);
@@ -105,8 +96,17 @@ export function RenderHighlightView({
       };
     }
   });
+  return highlight;
+}
+
+export function RenderHighlightView({
+  children,
+  style,
+  ...props
+}: ViewProps) {
+  const highlight = useRenderHighlight();
   return (
-    <View style={[style, highlight, {}]} {...props}>
+    <View style={[style, highlight]} {...props}>
       {children}
     </View>
   );
@@ -117,39 +117,7 @@ export function RenderHighlightText({
   style,
   ...props
 }: TextProps) {
-  const [showHighlight, setShowHighlight] = useState(true);
-  const fromInterval = useRef(false);
-  // console.log(
-  //   `showHighlight: ${showHighlight} fromInterval: ${fromInterval.current}`,
-  // );
-  if (!fromInterval.current && !showHighlight) {
-    // console.log("show highlight again");
-    setShowHighlight(true);
-  }
-  fromInterval.current = false;
-  const highlight = showHighlight
-    ? {
-        borderColor: "#f00f",
-        backgroundColor: "#f001",
-        borderWidth: 2,
-      }
-    : {
-        borderColor: "#0000",
-        backgroundColor: "#0000",
-        borderWidth: 2,
-      };
-  useEffect(() => {
-    if (showHighlight) {
-      const id = setInterval(() => {
-        // console.log(`setInterval(${ts()})`);
-        fromInterval.current = true;
-        setShowHighlight(false);
-      }, 750);
-      return () => {
-        clearInterval(id);
-      };
-    }
-  });
+  const highlight = useRenderHighlight();
   return (
     <Text style={[style, highlight]} {...props}>
       {children}
