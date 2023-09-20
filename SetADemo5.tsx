@@ -6,7 +6,6 @@ import {
   LctHorzContainer,
   LctView,
   SubtitleText,
-  TitleText,
 } from "./Shared";
 import styles from "./styles";
 import { useState } from "react";
@@ -50,7 +49,7 @@ function App4Subcomponent({ name, onChangeName }: Props) {
   );
 }
 
-export default function RenderApp4() {
+export default function SetADemo5() {
   const [name, setName] = useState("Barney");
 
   return (

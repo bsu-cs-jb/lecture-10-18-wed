@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import RenderApp1 from "./RenderApp1";
-import RenderApp2 from "./RenderApp2";
-import RenderApp3 from "./RenderApp3";
-import RenderApp1b from "./RenderApp1b";
-import RenderApp4 from "./RenderApp4";
+import SetADemo1 from "./SetADemo1";
+import SetADemo3 from "./SetADemo3";
+import SetADemo4 from "./SetADemo4";
+import SetADemo2 from "./SetADemo2";
+import SetADemo5 from "./SetADemo5";
 import styles from "./styles";
 
 const Tab = createBottomTabNavigator();
@@ -14,11 +14,11 @@ export default function DemoSetA() {
         headerTitleStyle: styles.titleText,
       }}
     >
-      <Tab.Screen name="Demo 1" component={RenderApp1} />
-      <Tab.Screen name="Demo 1b" component={RenderApp1b} />
-      <Tab.Screen name="Demo 2" component={RenderApp2} />
-      <Tab.Screen name="Demo 3" component={RenderApp3} />
-      <Tab.Screen name="Demo 4" component={RenderApp4} />
+      <Tab.Screen name="Demo 1" component={SetADemo1} />
+      <Tab.Screen name="Demo 2" component={SetADemo2} />
+      <Tab.Screen name="Demo 3" component={SetADemo3} />
+      <Tab.Screen name="Demo 4" component={SetADemo4} />
+      <Tab.Screen name="Demo 5" component={SetADemo5} />
     </Tab.Navigator>
   );
 }

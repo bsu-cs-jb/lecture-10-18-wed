@@ -4,13 +4,13 @@ import {
   LabelText,
   LctAvoidingView,
   LctHorzContainer,
+  LctView,
   SubtitleText,
-  TitleText,
 } from "./Shared";
 import styles from "./styles";
 import { useState } from "react";
 
-export default function RenderApp1() {
+function App1bSubcomponent() {
   const [name, setName] = useState("Barney");
 
   const changeNameTo = name == "Barney" ? "Suzie" : "Barney";
@@ -25,9 +25,7 @@ export default function RenderApp1() {
     setName("Barney");
   };
   return (
-    <LctAvoidingView style={styles.container}>
-      <SubtitleText>Inline</SubtitleText>
-      <FlexFill />
+    <LctView style={styles.container}>
       <LabelText>Name: {name}</LabelText>
       <LctHorzContainer>
         <LabelText>Set name to:</LabelText>
@@ -37,6 +35,16 @@ export default function RenderApp1() {
       <LctHorzContainer>
         <TextInput style={styles.input} />
       </LctHorzContainer>
+    </LctView>
+  );
+}
+
+export default function SetADemo2() {
+  return (
+    <LctAvoidingView style={styles.container}>
+      <SubtitleText>Subcomponent</SubtitleText>
+      <FlexFill />
+      <App1bSubcomponent />
       <View style={{ flex: 4 }} />
     </LctAvoidingView>
   );

@@ -5,12 +5,11 @@ import {
   LctAvoidingView,
   LctHorzContainer,
   SubtitleText,
-  TitleText,
 } from "./Shared";
 import styles from "./styles";
 import { useState } from "react";
 
-export default function RenderApp3() {
+export default function SetADemo4() {
   const [name, setName] = useState("Barney");
   const [inputValue, setInputValue] = useState("Barney");
 
