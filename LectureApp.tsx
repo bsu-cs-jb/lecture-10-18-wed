@@ -1,3 +1,4 @@
+import React, { useEffect, useRef } from "react";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import {
@@ -6,23 +7,29 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  StyleSheet,
   TextInput,
   View,
+  ViewProps,
 } from "react-native";
 
 import styles from "./styles";
 import {
   FlexFill,
   LabelText,
+  RenderHighlightView,
   SubtitleText,
   TitleText,
 } from "./Shared";
+
+import { ts } from "./utils";
 
 export default function LectureApp() {
   const [birdInputText, setBirdInputText] = useState("");
   const [birdText, setBirdText] = useState("No birds here yet.");
   const [submissions, setSubmissions] = useState(0);
   const [cancelations, setCancelations] = useState(0);
+  console.log(`LectureApp(${ts()})`);
 
   const handleCancel = () => {
     setBirdInputText("");
@@ -52,7 +59,7 @@ export default function LectureApp() {
       behavior={Platform.OS == "ios" ? "padding" : "height"}
       style={styles.avoidingView}
     >
-      <View style={styles.container}>
+      <RenderHighlightView style={styles.container}>
         <TitleText>Lecture Base Repo</TitleText>
         <SubtitleText>A decent place to start</SubtitleText>
         <ScrollView style={styles.scrollContainer}>
@@ -62,7 +69,7 @@ export default function LectureApp() {
           You have submitted {submissions} time(s) and canceled{" "}
           {cancelations} time(s).
         </LabelText>
-        <View style={styles.horzContainer}>
+        <RenderHighlightView style={styles.horzContainer}>
           <LabelText>Name your bird:</LabelText>
           <TextInput
             style={styles.input}
@@ -71,14 +78,14 @@ export default function LectureApp() {
             onSubmitEditing={handleSubmit}
             blurOnSubmit={false}
           />
-        </View>
-        <View style={styles.horzContainer}>
+        </RenderHighlightView>
+        <RenderHighlightView style={styles.horzContainer}>
           <Button title="Cancel" onPress={handleCancel} />
           <FlexFill />
           <Button title="Submit" onPress={handleSubmit} />
-        </View>
+        </RenderHighlightView>
         <StatusBar style="auto" />
-      </View>
+      </RenderHighlightView>
     </KeyboardAvoidingView>
   );
 }

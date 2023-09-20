@@ -33,18 +33,17 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   topLevelContainer: {
-    // Add styles here to affect the outer App component
-    // or leave empty if you do not need to change it.
+    flex: 1,
+    paddingTop: 60,
+    paddingBottom: 20,
   },
   avoidingView: {
     flex: 1,
   },
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 10,
+    // paddingHorizontal: 10,
     gap: 5,
   },
 });
