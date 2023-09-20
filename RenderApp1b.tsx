@@ -17,10 +17,12 @@ function App1bSubcomponent() {
   const changeNameTo = name == "Barney" ? "Suzie" : "Barney";
 
   const handleChangeName = () => {
+    console.log(`handleChangeName(${changeNameTo})`);
     setName(changeNameTo);
   };
 
   const handleBarney = () => {
+    console.log(`setName(Barney)`);
     setName("Barney");
   };
   return (

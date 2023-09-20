@@ -16,10 +16,12 @@ export default function RenderApp1() {
   const changeNameTo = name == "Barney" ? "Suzie" : "Barney";
 
   const handleChangeName = () => {
+    console.log(`handleChangeName(${changeNameTo})`);
     setName(changeNameTo);
   };
 
   const handleBarney = () => {
+    console.log(`setName(Barney)`);
     setName("Barney");
   };
   return (

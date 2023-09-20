@@ -15,10 +15,12 @@ export default function RenderApp3() {
   const [inputValue, setInputValue] = useState("Barney");
 
   const handleReset = () => {
+    console.log(`handleReset()`);
     setInputValue("");
   };
 
   const handleSubmit = () => {
+    console.log(`handleSubmit(${inputValue})`);
     setName(inputValue);
   };
 
