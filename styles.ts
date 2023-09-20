@@ -1,6 +1,18 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  screenUnpressed: {
+    backgroundColor: "#DDE",
+    borderRadius: 8,
+    padding: 6,
+    // paddingHorizontal: 15,
+    width: "100%",
+  },
+  screenPressed: {
+    backgroundColor: "#BBE",
+    borderRadius: 8,
+    padding: 6,
+  },
   flexFill: {
     flex: 1,
   },
@@ -43,7 +55,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    // paddingHorizontal: 10,
+    paddingHorizontal: 10,
     gap: 5,
   },
 });
