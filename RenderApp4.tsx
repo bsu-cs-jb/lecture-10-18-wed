@@ -55,7 +55,6 @@ export default function RenderApp4() {
 
   return (
     <LctAvoidingView style={styles.container}>
-      <TitleText>Render App 4</TitleText>
       <SubtitleText>Subcomponent with callback</SubtitleText>
       <FlexFill />
       <LabelText>Name: {name}</LabelText>

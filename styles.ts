@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
   },
   topLevelContainer: {
     flex: 1,
+    backgroundColor: "#fff",
     paddingTop: 60,
     paddingBottom: 20,
   },
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    // backgroundColor: "#fff",
     alignItems: "center",
     paddingHorizontal: 10,
     gap: 5,

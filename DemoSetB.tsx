@@ -1,16 +1,22 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import RenderApp1 from "./RenderApp1";
-import RenderApp2 from "./RenderApp2";
-import RenderApp3 from "./RenderApp3";
-import RenderApp1b from "./RenderApp1b";
-import RenderApp4 from "./RenderApp4";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import styles from "./styles";
+import SetBDemo1 from "./SetBDemo1";
+import SetBDemo2 from "./SetBDemo2";
+import SetBDemo3 from "./SetBDemo3";
 
 const Tab = createBottomTabNavigator();
 export default function DemoSetB() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerTitleStyle: styles.titleText,
+      }}
+    >
       {/* TODO: Do something with timers */}
-      <Tab.Screen name="Demo 1" component={RenderApp1} />
+      <Tab.Screen name="Demo 1" component={SetBDemo1} />
+      <Tab.Screen name="Demo 2" component={SetBDemo2} />
+      <Tab.Screen name="Demo 3" component={SetBDemo3} />
     </Tab.Navigator>
   );
 }

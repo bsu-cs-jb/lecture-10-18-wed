@@ -26,7 +26,6 @@ export default function RenderApp1() {
   };
   return (
     <LctAvoidingView style={styles.container}>
-      <TitleText>Render App 1</TitleText>
       <SubtitleText>Inline</SubtitleText>
       <FlexFill />
       <LabelText>Name: {name}</LabelText>

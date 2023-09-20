@@ -43,7 +43,6 @@ function App1bSubcomponent() {
 export default function RenderApp1b() {
   return (
     <LctAvoidingView style={styles.container}>
-      <TitleText>Render App 1b</TitleText>
       <SubtitleText>Subcomponent</SubtitleText>
       <FlexFill />
       <App1bSubcomponent />

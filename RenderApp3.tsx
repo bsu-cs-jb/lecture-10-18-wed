@@ -26,7 +26,6 @@ export default function RenderApp3() {
 
   return (
     <LctAvoidingView style={styles.container}>
-      <TitleText>Render App 3</TitleText>
       <SubtitleText>Change name on submit</SubtitleText>
       <FlexFill />
       <LabelText>Name: {name}</LabelText>

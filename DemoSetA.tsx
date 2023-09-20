@@ -4,11 +4,16 @@ import RenderApp2 from "./RenderApp2";
 import RenderApp3 from "./RenderApp3";
 import RenderApp1b from "./RenderApp1b";
 import RenderApp4 from "./RenderApp4";
+import styles from "./styles";
 
 const Tab = createBottomTabNavigator();
 export default function DemoSetA() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerTitleStyle: styles.titleText,
+      }}
+    >
       <Tab.Screen name="Demo 1" component={RenderApp1} />
       <Tab.Screen name="Demo 1b" component={RenderApp1b} />
       <Tab.Screen name="Demo 2" component={RenderApp2} />

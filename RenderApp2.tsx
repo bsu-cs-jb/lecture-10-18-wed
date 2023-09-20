@@ -15,7 +15,6 @@ export default function RenderApp2() {
 
   return (
     <LctAvoidingView style={styles.container}>
-      <TitleText>Render App 2</TitleText>
       <SubtitleText>Change name directly</SubtitleText>
       <FlexFill />
       <LabelText>Name: {name}</LabelText>
