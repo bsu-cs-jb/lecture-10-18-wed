@@ -7,10 +7,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  StyleSheet,
   TextInput,
-  View,
-  ViewProps,
 } from "react-native";
 
 import styles from "./styles";
