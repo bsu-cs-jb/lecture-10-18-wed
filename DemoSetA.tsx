@@ -1,3 +1,4 @@
+import * as React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import SetADemo1 from "./SetADemo1";
 import SetADemo3 from "./SetADemo3";

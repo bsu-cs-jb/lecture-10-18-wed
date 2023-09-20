@@ -1,3 +1,4 @@
+import * as React from "react";
 import { FlatList, Pressable, View } from "react-native";
 import { LabelText, TitleText } from "./Shared";
 import styles from "./styles";

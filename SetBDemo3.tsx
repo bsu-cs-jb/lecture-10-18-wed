@@ -1,11 +1,11 @@
-import { Button, TextInput, View } from "react-native";
+import * as React from "react";
+import { Button, View } from "react-native";
 import {
   FlexFill,
   LabelText,
   LctAvoidingView,
   LctHorzContainer,
   SubtitleText,
-  TitleText,
 } from "./Shared";
 import styles from "./styles";
 import { useEffect, useState } from "react";

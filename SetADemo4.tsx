@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Button, TextInput, View } from "react-native";
 import {
   FlexFill,

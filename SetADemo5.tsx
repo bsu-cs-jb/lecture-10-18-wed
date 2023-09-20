@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Button, TextInput, View } from "react-native";
 import {
   FlexFill,
@@ -10,11 +11,10 @@ import {
 import styles from "./styles";
 import { useState } from "react";
 interface Props {
-  name?: string;
+  name: string;
   onChangeName?: (name: string) => void;
 }
 function App4Subcomponent({ name, onChangeName }: Props) {
-  // const [name, setName] = useState("Barney");
   const [inputValue, setInputValue] = useState(name);
 
   const handleReset = () => {
@@ -24,7 +24,7 @@ function App4Subcomponent({ name, onChangeName }: Props) {
 
   const handleSubmit = () => {
     console.log(`handleSubmit(${inputValue})`);
-    if (onChangeName && inputValue !== undefined) {
+    if (onChangeName) {
       onChangeName(inputValue);
     }
   };
