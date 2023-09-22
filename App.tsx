@@ -1,6 +1,6 @@
 import "react-native-gesture-handler";
 import * as React from "react";
-import LectureApp from "./LectureApp";
+import BirdApp from "./BirdApp";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./Home";
@@ -10,7 +10,7 @@ import DemoSetB from "./DemoSetB";
 const Stack = createStackNavigator();
 
 export default function App() {
-  const birdApp = <LectureApp />;
+  const birdApp = <BirdApp />;
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">

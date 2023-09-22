@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#DDE",
     borderRadius: 8,
     padding: 6,
-    // paddingHorizontal: 15,
     width: "100%",
   },
   screenPressed: {
@@ -55,9 +54,14 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    // backgroundColor: "#fff",
     alignItems: "center",
     paddingHorizontal: 10,
+    gap: 5,
+  },
+  stackContainer: {
+    flex: 1,
+    width: "100%",
+    padding: 10,
     gap: 5,
   },
 });

@@ -21,7 +21,7 @@ import {
 
 import { ts } from "./utils";
 
-export default function LectureApp() {
+export default function BirdApp() {
   const [birdInputText, setBirdInputText] = useState("");
   const [birdText, setBirdText] = useState("No birds here yet.");
   const [submissions, setSubmissions] = useState(0);

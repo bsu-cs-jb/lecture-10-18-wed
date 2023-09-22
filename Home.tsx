@@ -37,10 +37,9 @@ export default function Home({ navigation }) {
   };
   return (
     <View style={styles.container}>
-      <TitleText>Home</TitleText>
       <FlatList
         style={{ width: "100%" }}
-        contentContainerStyle={{ width: "100%", gap: 10 }}
+        contentContainerStyle={styles.stackContainer}
         data={SCREENS}
         renderItem={({ item }) => (
           <SubScreen name={item.name} onPress={handlePress} />
