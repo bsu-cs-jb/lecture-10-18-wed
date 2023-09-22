@@ -4,8 +4,7 @@ import BirdApp from "./BirdApp";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./Home";
-import DemoSetA from "./DemoSetA";
-import DemoSetB from "./DemoSetB";
+import { STACKS } from "./stacks";
 
 const Stack = createStackNavigator();
 
@@ -15,8 +14,14 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Demo Set A" component={DemoSetA} />
-        <Stack.Screen name="Demo Set B" component={DemoSetB} />
+        {Object.entries(STACKS).map(([key, stack]) => (
+          <Stack.Screen
+            key={key}
+            name={key}
+            component={stack.component}
+            options={{ title: stack.title }}
+          />
+        ))}
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -2,34 +2,28 @@ import * as React from "react";
 import { FlatList, Pressable, View } from "react-native";
 import { LabelText, TitleText } from "./Shared";
 import styles from "./styles";
+import { STACKS } from "./stacks";
 
 function SubScreen({
-  name,
+  screenName,
+  title,
   onPress,
 }: {
-  name: string;
-  onPress?: (name: string) => void;
+  screenName: string;
+  title: string;
+  onPress?: (screenName: string) => void;
 }) {
   return (
     <Pressable
       style={({ pressed }) =>
         pressed ? styles.screenPressed : styles.screenUnpressed
       }
-      onPress={() => (onPress ? onPress(name) : null)}
+      onPress={() => (onPress ? onPress(screenName) : null)}
     >
-      <LabelText>{name}</LabelText>
+      <LabelText>{title}</LabelText>
     </Pressable>
   );
 }
-
-const SCREENS = [
-  {
-    name: "Demo Set A",
-  },
-  {
-    name: "Demo Set B",
-  },
-];
 
 export default function Home({ navigation }) {
   const handlePress = (name: string) => {
@@ -40,11 +34,15 @@ export default function Home({ navigation }) {
       <FlatList
         style={{ width: "100%" }}
         contentContainerStyle={styles.stackContainer}
-        data={SCREENS}
+        data={Object.values(STACKS)}
         renderItem={({ item }) => (
-          <SubScreen name={item.name} onPress={handlePress} />
+          <SubScreen
+            screenName={item.key}
+            title={item.title}
+            onPress={handlePress}
+          />
         )}
-        keyExtractor={(item) => item.name}
+        keyExtractor={(item) => item.key}
       />
     </View>
   );
