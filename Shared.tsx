@@ -3,10 +3,13 @@ import { useEffect, useRef, useState } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
+  Pressable,
+  PressableProps,
   Text,
   TextProps,
   View,
   ViewProps,
+  ViewStyle,
 } from "react-native";
 import styles from "./styles";
 
@@ -125,4 +128,27 @@ export function RenderHighlightText({
     </Text>
   );
 }
-// TODO: Add a BigButton class for lecture
+
+interface BigButtonProps extends PressableProps {
+  title: string;
+  style?: ViewStyle;
+}
+
+export function BigButton({
+  title,
+  onPress,
+  style,
+  ...props
+}: BigButtonProps) {
+  return (
+    <Pressable
+      style={({ pressed }) => [
+        style,
+        pressed ? styles.bigButtonPressed : styles.bigButtonUnpressed,
+      ]}
+      onPress={onPress}
+    >
+      <LabelText>{title}</LabelText>
+    </Pressable>
+  );
+}

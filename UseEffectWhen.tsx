@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Button, Switch, TextInput, View } from "react-native";
 import {
+  BigButton,
   FlexFill,
   LabelText,
   LctAvoidingView,
@@ -67,13 +68,13 @@ export default function UseEffectWhen() {
       <LabelText>Age: {age}</LabelText>
       <LctHorzContainer>
         <LabelText>Set name to:</LabelText>
-        <Button title={changeNameTo} onPress={handleChangeName} />
-        <Button title="Barney" onPress={handleBarney} />
+        <BigButton title={changeNameTo} onPress={handleChangeName} />
+        <BigButton title="Barney" onPress={handleBarney} />
       </LctHorzContainer>
       <LctHorzContainer>
         <LabelText>Set age to:</LabelText>
-        <Button title="Random" onPress={handleRandomAge} />
-        <Button title="22" onPress={handle22} />
+        <BigButton title="Random" onPress={handleRandomAge} />
+        <BigButton title="22" onPress={handle22} />
       </LctHorzContainer>
       <LctHorzContainer>
         <LabelText>No dep useEffect</LabelText>

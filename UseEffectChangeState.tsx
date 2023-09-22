@@ -1,10 +1,12 @@
 import * as React from "react";
 import { Button, Switch, TextInput, View } from "react-native";
 import {
+  BigButton,
   FlexFill,
   LabelText,
   LctAvoidingView,
   LctHorzContainer,
+  LctView,
   SubtitleText,
 } from "./Shared";
 import styles from "./styles";
@@ -16,7 +18,7 @@ function log(text: string) {
 }
 
 export default function UseEffectChangeState() {
-  log(`** UseEffectChangeState()`);
+  log(`** UseEffectChangeState() **`);
   const [name, setName] = useState("Barney");
   const [age, setAge] = useState(22);
   const [noDepsChangeState, setNoDepsChangeState] = useState(false);
@@ -44,7 +46,7 @@ export default function UseEffectChangeState() {
   };
 
   useEffect(() => {
-    log(`useEffect() no deps`);
+    log(`useEffect() no deps change state: ${noDepsChangeState}`);
     if (noDepsChangeState) {
       log(`  - setName(${changeNameTo})`);
       setName(changeNameTo);
@@ -66,21 +68,42 @@ export default function UseEffectChangeState() {
       <LabelText>Age: {age}</LabelText>
       <LctHorzContainer>
         <LabelText>Set name to:</LabelText>
-        <Button title={changeNameTo} onPress={handleChangeName} />
-        <Button title="Barney" onPress={handleBarney} />
+        <BigButton title={changeNameTo} onPress={handleChangeName} />
+        <BigButton title="Barney" onPress={handleBarney} />
       </LctHorzContainer>
       <LctHorzContainer>
         <LabelText>Set age to:</LabelText>
-        <Button title="Random" onPress={handleRandomAge} />
-        <Button title="22" onPress={handle22} />
+        <BigButton title="Random" onPress={handleRandomAge} />
+        <BigButton title="22" onPress={handle22} />
       </LctHorzContainer>
-      <LctHorzContainer>
-        <LabelText>No dep useEffect</LabelText>
-        <Switch
-          value={noDepsChangeState}
-          onValueChange={() => setNoDepsChangeState((b) => !b)}
-        />
-      </LctHorzContainer>
+      <LctView style={styles.formContainer}>
+        <LctView style={styles.formRow}>
+          <SubtitleText>Change state in useEffect</SubtitleText>
+        </LctView>
+        <LctView style={styles.formRow}>
+          <LctView style={styles.formColumn}>
+            <LabelText>No dep</LabelText>
+          </LctView>
+          <LctView style={styles.formColumn}>
+            <Switch
+              value={noDepsChangeState}
+              onValueChange={() => setNoDepsChangeState((b) => !b)}
+            />
+          </LctView>
+        </LctView>
+        <LctView style={styles.formRow}>
+          <LctView style={styles.formColumn}>
+            <LabelText>deps = [name]</LabelText>
+          </LctView>
+          <LctView style={styles.formColumn}>
+            <Switch
+              value={noDepsChangeState}
+              onValueChange={() => setNoDepsChangeState((b) => !b)}
+            />
+          </LctView>
+        </LctView>
+        <LctView style={styles.formColumn}></LctView>
+      </LctView>
       <View style={{ flex: 4 }} />
     </LctAvoidingView>
   );

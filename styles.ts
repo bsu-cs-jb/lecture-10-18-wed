@@ -12,6 +12,16 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 6,
   },
+  bigButtonUnpressed: {
+    backgroundColor: "#33C9FF",
+    borderRadius: 8,
+    padding: 6,
+  },
+  bigButtonPressed: {
+    backgroundColor: "#85DEFF",
+    borderRadius: 8,
+    padding: 6,
+  },
   flexFill: {
     flex: 1,
   },
@@ -63,6 +73,18 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 10,
     gap: 5,
+  },
+  formContainer: {
+    flexDirection: "column",
+    gap: 10,
+    flexWrap: "wrap",
+  },
+  formRow: {
+    width: "100%",
+    flexDirection: "row",
+  },
+  formColumn: {
+    flex: 0.5,
   },
 });
 
