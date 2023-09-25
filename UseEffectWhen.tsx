@@ -17,7 +17,7 @@ function log(text: string) {
 }
 
 export default function UseEffectWhen() {
-  log(`** UseEffectWhen() START **`);
+  // log(`** UseEffectWhen() START **`);
   const [name, setName] = useState("Barney");
   const [age, setAge] = useState(22);
   const [noDepsChangeState, setNoDepsChangeState] = useState(false);
@@ -59,7 +59,7 @@ export default function UseEffectWhen() {
     log(`useEffect(${name}) deps=[name]`);
   }, [name]);
 
-  log(`** UseEffectWhen() END **`);
+  // log(`** UseEffectWhen() END **`);
   return (
     <LctAvoidingView style={styles.container}>
       <SubtitleText></SubtitleText>

@@ -28,6 +28,9 @@ export default function UseEffectChangeState() {
   const handleChangeName = () => {
     log(`handleChangeName(${changeNameTo})`);
     setName(changeNameTo);
+    // WILL THE COMPONENT RENDER?
+    // A - yes
+    // B - no
   };
 
   const handleBarney = () => {
@@ -35,7 +38,10 @@ export default function UseEffectChangeState() {
     setName("Barney");
   };
   const handleRandomAge = () => {
-    const newAge = 5 + Math.round(Math.random() * 95);
+    let newAge = age;
+    while (newAge === age) {
+      newAge = 5 + Math.round(Math.random() * 95);
+    }
     log(`handleRandomAge(${newAge})`);
     setAge(newAge);
   };
@@ -46,7 +52,7 @@ export default function UseEffectChangeState() {
   };
 
   useEffect(() => {
-    log(`useEffect() no deps change state: ${noDepsChangeState}`);
+    log(`useEffect(A) no deps change state: ${noDepsChangeState}`);
     if (noDepsChangeState) {
       log(`  - setName(${changeNameTo})`);
       setName(changeNameTo);
@@ -54,11 +60,13 @@ export default function UseEffectChangeState() {
     }
   });
   useEffect(() => {
-    log(`useEffect() empty deps`);
+    log(`useEffect(B) empty deps`);
   }, []);
   useEffect(() => {
-    log(`useEffect(${name}) deps=[name]`);
+    log(`useEffect(C) - name=${name} deps=[name]`);
+    handleRandomAge();
   }, [name]);
+  // E - none of the above
 
   return (
     <LctAvoidingView style={styles.container}>
