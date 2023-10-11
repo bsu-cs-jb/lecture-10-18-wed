@@ -1,0 +1,37 @@
+import * as React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { LctTabNavigator } from "./LctTabNavigator";
+import UseContext1 from "./UseContext1";
+
+const Tab = createBottomTabNavigator();
+
+export default function UseContextDemos() {
+  const TABS = [
+    {
+      key: "First",
+      title: "First",
+      label: "First",
+      component: UseContext1,
+      icon: "barcode",
+    },
+  ];
+
+  const routeToIcon = Object.fromEntries(
+    TABS.map((tab) => [tab.key, tab.icon]),
+  );
+  return (
+    <LctTabNavigator Tab={Tab} routeToIcon={routeToIcon}>
+      {TABS.map((tab) => (
+        <Tab.Screen
+          key={tab.key}
+          name={tab.key}
+          component={tab.component}
+          options={{
+            title: tab.title ?? tab.key,
+            tabBarLabel: tab.label ?? tab.key,
+          }}
+        />
+      ))}
+    </LctTabNavigator>
+  );
+}

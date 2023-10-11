@@ -1,15 +1,9 @@
-import DemoSetB from "./DemoSetB";
-import UseEffectDemos from "./UseEffectDemos";
+import UseContextDemos from "./UseContextDemos";
 
 export const STACKS = {
-  useEffect: {
-    key: "useEffect",
-    title: "useEffect Demos",
-    component: UseEffectDemos,
-  },
-  setB: {
-    key: "setB",
-    title: "Demo Set B",
-    component: DemoSetB,
+  useContext: {
+    key: "useContext",
+    title: "useContext Demos",
+    component: UseContextDemos,
   },
 };
