@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     paddingHorizontal: 10,
+    width: "100%",
     gap: 5,
   },
   stackContainer: {

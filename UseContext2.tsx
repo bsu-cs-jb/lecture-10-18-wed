@@ -25,7 +25,7 @@ function AnotherComponent() {
   );
 }
 
-export default function UseContext1() {
+export default function UseContext2() {
   // HOOKS MUST BE CALLED FROM HERE
   // must not be inside of loops or conditionals
   const [theme, setTheme] = useState("dark");

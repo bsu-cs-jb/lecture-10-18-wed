@@ -2,6 +2,8 @@ import * as React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { LctTabNavigator } from "./LctTabNavigator";
 import UseContext1 from "./UseContext1";
+import UseContext2 from "./UseContext2";
+import UseContext3 from "./UseContext3";
 
 const Tab = createBottomTabNavigator();
 
@@ -12,6 +14,20 @@ export default function UseContextDemos() {
       title: "First",
       label: "First",
       component: UseContext1,
+      icon: "barcode",
+    },
+    {
+      key: "Second",
+      title: "Second",
+      label: "Second",
+      component: UseContext2,
+      icon: "barcode",
+    },
+    {
+      key: "Third",
+      title: "Third",
+      label: "Third",
+      component: UseContext3,
       icon: "barcode",
     },
   ];

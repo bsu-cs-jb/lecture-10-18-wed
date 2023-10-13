@@ -14,8 +14,8 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} />
         {Object.entries(STACKS).map(([key, stack]) => (
           <Stack.Screen
-            key={key}
-            name={key}
+            key={stack.key}
+            name={stack.key}
             component={stack.component}
             options={{ title: stack.title }}
           />

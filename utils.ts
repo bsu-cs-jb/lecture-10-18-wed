@@ -7,6 +7,10 @@ export function genid() {
   return `id-${p}`;
 }
 
+export function log(text: string) {
+  console.log(`${ts()}: ${text}`);
+}
+
 export function rand(n = 2) {
   return (Math.random() * 10 ** n)
     .toFixed()
