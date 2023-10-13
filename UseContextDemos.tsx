@@ -4,6 +4,8 @@ import { LctTabNavigator } from "./LctTabNavigator";
 import UseContext1 from "./UseContext1";
 import UseContext2 from "./UseContext2";
 import UseContext3 from "./UseContext3";
+import UseContext4 from "./UseContext4";
+import UseContext5 from "./UseContext5";
 
 const Tab = createBottomTabNavigator();
 
@@ -28,6 +30,20 @@ export default function UseContextDemos() {
       title: "Third",
       label: "Third",
       component: UseContext3,
+      icon: "barcode",
+    },
+    {
+      key: "Fourth",
+      title: "Fourth",
+      label: "Fourth",
+      component: UseContext4,
+      icon: "barcode",
+    },
+    {
+      key: "Five",
+      title: "Five",
+      label: "Five",
+      component: UseContext5,
       icon: "barcode",
     },
   ];
