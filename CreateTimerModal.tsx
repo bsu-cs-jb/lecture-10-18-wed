@@ -1,23 +1,15 @@
 import React, { createContext } from "react";
-import {
-  Button,
-  Modal,
-  StyleSheet,
-  TextInput,
-  View,
-} from "react-native";
+import { Modal, StyleSheet, View } from "react-native";
 import {
   BigButton,
-  FlexFill,
   LabelText,
   LctAvoidingView,
-  LctHorzContainer,
   LctView,
   SubtitleText,
 } from "./Shared";
-import styles from "./styles";
+import sharedStyles from "./styles";
 import { genid, log } from "./utils";
-import { useContext, useState, useEffect } from "react";
+import { useState } from "react";
 import { ScrollView } from "react-native-gesture-handler";
 
 interface Reminder {
@@ -63,7 +55,7 @@ function EditReminder({
   );
 }
 
-export default function UseContext3() {
+export default function CreateTimerModal() {
   const [reminderList, setReminderList] = useState<Reminder[]>([]);
   const [editModalVisible, setEditModalVisible] = useState(false);
   const [editingReminder, setEditingReminder] = useState<
@@ -94,9 +86,9 @@ export default function UseContext3() {
     setEditModalVisible(true);
   };
   return (
-    <LctAvoidingView style={styles.container}>
+    <LctAvoidingView style={sharedStyles.container}>
       <Modal visible={editModalVisible}>
-        <LctView style={compStyles.modal}>
+        <LctView style={styles.modal}>
           <SubtitleText>This is my modal</SubtitleText>
           <EditReminder
             reminderType="create"
@@ -107,9 +99,9 @@ export default function UseContext3() {
         </LctView>
       </Modal>
       <SubtitleText>Create Reminder</SubtitleText>
-      <ScrollView style={styles.scrollContainer}>
+      <ScrollView style={sharedStyles.scrollContainer}>
         {reminderList.map((reminder) => (
-          <View key={reminder.id} style={styles.container}>
+          <View key={reminder.id} style={sharedStyles.container}>
             <LabelText>id: {reminder?.id}</LabelText>
             <LabelText>name: {reminder?.name}</LabelText>
             <LabelText>time: {reminder?.time}</LabelText>
@@ -128,7 +120,7 @@ export default function UseContext3() {
   );
 }
 
-const compStyles = StyleSheet.create({
+const styles = StyleSheet.create({
   modal: {
     flex: 1,
     margin: 50,

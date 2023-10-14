@@ -1,54 +1,42 @@
 import * as React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { LctTabNavigator } from "./LctTabNavigator";
-import UseContext1 from "./UseContext1";
-import UseContext2 from "./UseContext2";
-import UseContext3 from "./UseContext3";
-import UseContext4 from "./UseContext4";
+import { IoniconIcons, LctTabNavigator } from "./LctTabNavigator";
+import CreateTimerModal from "./CreateTimerModal";
+import PropDrilling from "./PropDrilling";
 import UseContext5 from "./UseContext5";
+import UseContextTheme from "./UseContextTheme";
 
 const Tab = createBottomTabNavigator();
 
+interface Tab {
+  key: string;
+  title?: string;
+  label?: string;
+  component: () => React.ReactNode;
+  icon?: IoniconIcons;
+}
+
 export default function UseContextDemos() {
-  const TABS = [
+  const TABS: Tab[] = [
     {
-      key: "First",
-      title: "First",
-      label: "First",
-      component: UseContext1,
-      icon: "barcode",
-    },
-    {
-      key: "Second",
-      title: "Second",
-      label: "Second",
-      component: UseContext2,
-      icon: "barcode",
-    },
-    {
-      key: "Third",
-      title: "Third",
-      label: "Third",
-      component: UseContext3,
-      icon: "barcode",
+      key: "Theme",
+      component: UseContextTheme,
     },
     {
       key: "Fourth",
-      title: "Fourth",
-      label: "Fourth",
-      component: UseContext4,
-      icon: "barcode",
+      component: PropDrilling,
     },
     {
       key: "Five",
-      title: "Five",
-      label: "Five",
       component: UseContext5,
-      icon: "barcode",
+    },
+    {
+      key: "Timer Modal",
+      component: CreateTimerModal,
     },
   ];
 
-  const routeToIcon = Object.fromEntries(
+  const routeToIcon = Object.fromEntries<IoniconIcons | undefined>(
     TABS.map((tab) => [tab.key, tab.icon]),
   );
   return (
@@ -60,7 +48,7 @@ export default function UseContextDemos() {
           component={tab.component}
           options={{
             title: tab.title ?? tab.key,
-            tabBarLabel: tab.label ?? tab.key,
+            tabBarLabel: tab.label ?? tab.title ?? tab.key,
           }}
         />
       ))}

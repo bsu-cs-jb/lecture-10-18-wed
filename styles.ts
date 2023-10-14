@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
+const sharedStyles = StyleSheet.create({
   screenUnpressed: {
     backgroundColor: "#DDE",
     borderRadius: 8,
@@ -89,4 +89,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default styles;
+export default sharedStyles;
