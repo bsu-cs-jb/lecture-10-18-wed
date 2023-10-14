@@ -3,8 +3,17 @@ import { useRef } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import styles from "./styles";
+import { IONICON_LIST, IoniconIcons } from "./IoniconHelpers";
 
-export type IoniconIcons = keyof typeof Ionicons.glyphMap;
+const TabNavigator = createBottomTabNavigator();
+
+export interface TabSettings {
+  key: string;
+  title?: string;
+  label?: string;
+  component: () => React.ReactNode;
+  icon?: IoniconIcons;
+}
 
 interface IconHandlerProps {
   color: string;
@@ -12,94 +21,12 @@ interface IconHandlerProps {
   route: any;
 }
 
-export function LctTabNavigator({
-  Tab,
-  routeToIcon,
-  children,
-}: {
-  Tab: ReturnType<typeof createBottomTabNavigator>;
-  routeToIcon?: Record<string, IoniconIcons | undefined>;
-  children: any;
-}) {
+export function LctTabNavigator({ tabs }: { tabs: TabSettings[] }) {
+  const routeToIcon = Object.fromEntries<IoniconIcons | undefined>(
+    tabs.map((tab) => [tab.key, tab.icon]),
+  );
   const iconFallbackMap = useRef<NonNullable<typeof routeToIcon>>({});
-  const iconList = useRef<IoniconIcons[]>([
-    "albums",
-    "alert",
-    "barcode",
-    "at",
-    "beaker",
-    "bicycle",
-    "cloud-circle",
-    "cafe",
-    "flask",
-    "flower",
-    "briefcase",
-    "brush",
-    "bug",
-    "chevron-down",
-    "chevron-up",
-    "clipboard",
-    "cog",
-    "compass",
-    "copy",
-    "crop",
-    "document",
-    "documents",
-    "flash",
-    "flashlight",
-    "flower",
-    "folder",
-    "funnel",
-    "game-controller",
-    "globe",
-    "grid",
-    "help",
-    "images",
-    "language",
-    "layers",
-    "leaf",
-    "list",
-    "location",
-    "lock-open",
-    "log-out",
-    "magnet",
-    "medal",
-    "megaphone",
-    "mic",
-    "moon",
-    "notifications-off",
-    "paper-plane",
-    "pencil",
-    "pie-chart",
-    "pin",
-    "print",
-    "rocket",
-    "share",
-    "shield",
-    "shuffle",
-    "stopwatch",
-    "thermometer",
-    "thumbs-down",
-    "thumbs-up",
-    "trash",
-    "trophy",
-    "tv",
-    "water",
-    "cart",
-    "refresh",
-    "alert-circle",
-    "aperture",
-    "arrow-down-circle",
-    "arrow-up-circle",
-    "bar-chart",
-    "battery-charging",
-    "bluetooth",
-    "disc",
-    "eye-off",
-    "film",
-    "git-branch",
-    "git-commit",
-  ]);
+  const iconList = useRef<IoniconIcons[]>(IONICON_LIST);
 
   const getIcon = (routeName: string) => {
     if (routeToIcon && routeToIcon[routeName]) {
@@ -122,14 +49,24 @@ export function LctTabNavigator({
     return <Ionicons name={icon} size={size} color={color} />;
   };
   return (
-    <Tab.Navigator
+    <TabNavigator.Navigator
       screenOptions={({ route }) => ({
         headerTitleStyle: styles.titleText,
         tabBarIcon: (params) =>
           handleTabBarIcon({ ...params, route }),
       })}
     >
-      {children}
-    </Tab.Navigator>
+      {tabs.map((tab) => (
+        <TabNavigator.Screen
+          key={tab.key}
+          name={tab.key}
+          component={tab.component}
+          options={{
+            title: tab.title ?? tab.key,
+            tabBarLabel: tab.label ?? tab.title ?? tab.key,
+          }}
+        />
+      ))}
+    </TabNavigator.Navigator>
   );
 }

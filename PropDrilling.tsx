@@ -16,20 +16,23 @@ interface Reminder {
   name: string;
   time: number;
 }
-function ReminderListView(props: {
+function ReminderListView({
+  reminderList,
+  onCancel,
+}: {
   reminderList: Reminder[];
   onCancel?: (reminder: Reminder) => void;
 }) {
   const handleCancel = (reminder: Reminder) => {
-    if (props.onCancel) {
-      props.onCancel(reminder);
+    if (onCancel) {
+      onCancel(reminder);
     }
   };
   return (
     <View style={styles.reminderListSection}>
-      <SubtitleText>A list of reminders</SubtitleText>
+      <SubtitleText>Reminders:</SubtitleText>
       <ScrollView style={sharedStyles.scrollContainer}>
-        {props.reminderList.map((reminder) => (
+        {reminderList.map((reminder) => (
           <View key={reminder.id} style={styles.reminderList}>
             <LabelText>{reminder.name}</LabelText>
             <BigButton
@@ -67,6 +70,11 @@ export default function PropDrilling() {
       name: "Feed the dogs",
       time: 232342134,
     },
+    {
+      id: genid(),
+      name: "Take out the trash",
+      time: 2323423233,
+    },
   ]);
 
   return (
@@ -75,37 +83,26 @@ export default function PropDrilling() {
     </LctAvoidingView>
   );
 }
-
-const REF_STYLES = StyleSheet.create({
-  BOX_STYLES: {
-    borderWidth: 2,
-    flex: 1,
-    padding: 5,
-    gap: 5,
-    width: "100%",
-  },
-});
-
 const styles = StyleSheet.create({
   grid: {
-    ...REF_STYLES.BOX_STYLES,
+    ...sharedStyles.box,
     borderColor: "pink",
   },
   dailyNews: {
-    ...REF_STYLES.BOX_STYLES,
+    ...sharedStyles.box,
     borderColor: "blue",
   },
   bottomHalf: {
-    ...REF_STYLES.BOX_STYLES,
+    ...sharedStyles.box,
     flexDirection: "row",
     borderColor: "purple",
   },
   recentPhotos: {
-    ...REF_STYLES.BOX_STYLES,
+    ...sharedStyles.box,
     borderColor: "orange",
   },
   reminderListSection: {
-    ...REF_STYLES.BOX_STYLES,
+    ...sharedStyles.box,
     borderColor: "green",
   },
   reminderList: {

@@ -1,39 +1,62 @@
 import React, { useContext } from "react";
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 import { BigButton, LabelText, SubtitleText } from "./Shared";
 import { Reminder, ReminderListContext } from "./UseContext5Shared";
+import sharedStyles from "./styles";
 
-export function ReminderListView(props: {
+export function ReminderListView({
+  onCancel,
+}: {
   onCancel?: (reminder: Reminder) => void;
 }) {
   const reminderList = useContext(ReminderListContext);
 
   const handleCancel = (reminder: Reminder) => {
-    if (props.onCancel) {
-      props.onCancel(reminder);
+    if (onCancel) {
+      onCancel(reminder);
     }
   };
   return (
-    <View
-      style={{
-        borderColor: "green",
-        padding: 5,
-        borderWidth: 1,
-        flex: 1,
-      }}
-    >
-      <SubtitleText>A list of reminders</SubtitleText>
-      <ScrollView>
+    <View style={styles.reminderListSection}>
+      <SubtitleText>Reminders:</SubtitleText>
+      <ScrollView style={sharedStyles.scrollContainer}>
         {reminderList.map((reminder) => (
-          <LabelText key={reminder.id}>
-            Reminder: {reminder.name}
+          <View key={reminder.id} style={styles.reminderList}>
+            <LabelText>{reminder.name}</LabelText>
             <BigButton
               title="Cancel"
               onPress={() => handleCancel(reminder)}
             />
-          </LabelText>
+          </View>
         ))}
       </ScrollView>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  grid: {
+    ...sharedStyles.box,
+    borderColor: "pink",
+  },
+  dailyNews: {
+    ...sharedStyles.box,
+    borderColor: "blue",
+  },
+  bottomHalf: {
+    ...sharedStyles.box,
+    flexDirection: "row",
+    borderColor: "purple",
+  },
+  recentPhotos: {
+    ...sharedStyles.box,
+    borderColor: "orange",
+  },
+  reminderListSection: {
+    ...sharedStyles.box,
+    borderColor: "green",
+  },
+  reminderList: {
+    gap: 2,
+  },
+});

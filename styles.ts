@@ -1,6 +1,13 @@
 import { StyleSheet } from "react-native";
 
 const sharedStyles = StyleSheet.create({
+  box: {
+    borderWidth: 2,
+    flex: 1,
+    padding: 5,
+    gap: 5,
+    width: "100%",
+  },
   screenUnpressed: {
     backgroundColor: "#DDE",
     borderRadius: 8,
