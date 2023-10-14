@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import {
   BigButton,
@@ -7,25 +7,21 @@ import {
   SubtitleText,
 } from "./Shared";
 import sharedStyles from "./styles";
-import { genid } from "./utils";
+import { genid, log } from "./utils";
 import { useState } from "react";
 import { ScrollView } from "react-native-gesture-handler";
+import { Reminder } from "./Reminder";
 
-interface Reminder {
-  id: string;
-  name: string;
-  time: number;
-}
 function ReminderListView({
   reminderList,
   onCancel,
 }: {
   reminderList: Reminder[];
-  onCancel?: (reminder: Reminder) => void;
+  onCancel?: (id: string) => void;
 }) {
   const handleCancel = (reminder: Reminder) => {
     if (onCancel) {
-      onCancel(reminder);
+      onCancel(reminder.id);
     }
   };
   return (
@@ -46,25 +42,34 @@ function ReminderListView({
   );
 }
 
-function GridView(props: { reminderList: Reminder[] }) {
-  return (
-    <View style={styles.grid}>
-      <View style={styles.dailyNews}>
-        <SubtitleText>News of the day</SubtitleText>
-      </View>
-      <View style={styles.bottomHalf}>
-        <View style={styles.recentPhotos}>
-          <SubtitleText>Recent photos</SubtitleText>
+function GridView(props: {
+  reminderList: Reminder[];
+  onCancelReminder: (id: string) => void;
+}) {
+  return useMemo(
+    () => (
+      <View style={styles.grid}>
+        <View style={styles.dailyNews}>
+          <SubtitleText>News of the day</SubtitleText>
         </View>
-        <ReminderListView reminderList={props.reminderList} />
+        <View style={styles.bottomHalf}>
+          <View style={styles.recentPhotos}>
+            <SubtitleText>Recent photos</SubtitleText>
+          </View>
+          <ReminderListView
+            reminderList={props.reminderList}
+            onCancel={props.onCancelReminder}
+          />
+        </View>
       </View>
-    </View>
+    ),
+    [props.reminderList, props.onCancelReminder],
   );
 }
 
 export default function PropDrilling() {
   // Prop drilling
-  const [reminderList, _setReminderList] = useState<Reminder[]>([
+  const [reminderList, setReminderList] = useState<Reminder[]>([
     {
       id: genid(),
       name: "Feed the dogs",
@@ -77,9 +82,30 @@ export default function PropDrilling() {
     },
   ]);
 
+  const handleCancelReminder = (id: string) => {
+    log(`handleCancelReminder(${id})`);
+    setReminderList((reminders) =>
+      reminders.filter((r) => r.id !== id),
+    );
+  };
+
+  const handleAddReminder = () => {
+    setReminderList([
+      ...reminderList,
+      {
+        id: genid(),
+        name: `Reminder ${genid().substring(9, 12)}`,
+        time: Math.random() * 10e10,
+      },
+    ]);
+  };
   return (
     <LctAvoidingView style={sharedStyles.container}>
-      <GridView reminderList={reminderList} />
+      <BigButton title="Add Reminder" onPress={handleAddReminder} />
+      <GridView
+        reminderList={reminderList}
+        onCancelReminder={handleCancelReminder}
+      />
     </LctAvoidingView>
   );
 }
