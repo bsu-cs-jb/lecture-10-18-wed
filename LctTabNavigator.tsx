@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import styles from "./styles";
 import { IONICON_LIST, IoniconIcons } from "./IoniconHelpers";
+import { ParamListBase, RouteProp } from "@react-navigation/native";
 
 const TabNavigator = createBottomTabNavigator();
 
@@ -18,7 +19,7 @@ export interface TabSettings {
 interface IconHandlerProps {
   color: string;
   size: number;
-  route: any;
+  route: RouteProp<ParamListBase, string>;
 }
 
 export function LctTabNavigator({ tabs }: { tabs: TabSettings[] }) {

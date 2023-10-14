@@ -8,7 +8,7 @@ import { ReminderListContext } from "./Reminder";
 import { ReminderListView } from "./ReminderListView";
 import { Reminder } from "./Reminder";
 
-const GridView = memo(function () {
+const GridView = memo(function GridViewImpl() {
   return (
     <View style={styles.grid}>
       <View style={styles.dailyNews}>

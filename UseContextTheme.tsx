@@ -9,7 +9,6 @@ import {
 } from "./Shared";
 import sharedStyles from "./styles";
 import { useContext, useState } from "react";
-import { StyleSheet } from "react-native";
 
 const ThemeContext = createContext("dark");
 

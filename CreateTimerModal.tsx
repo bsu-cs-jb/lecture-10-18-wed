@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React from "react";
 import { Modal, StyleSheet, View } from "react-native";
 import {
   BigButton,
@@ -74,7 +74,9 @@ export default function CreateTimerModal() {
   const handleConfirm = (reminder: Reminder) => {
     setEditModalVisible(false);
     if (editingReminder) {
-      setReminderList([...reminderList, editingReminder]);
+      setReminderList((rl) =>
+        rl.map((r) => (r.id === editingReminder.id ? reminder : r)),
+      );
     }
   };
   const handleCancel = () => {

@@ -1,8 +1,9 @@
 import * as React from "react";
 import { FlatList, Pressable, View } from "react-native";
-import { LabelText, TitleText } from "./Shared";
+import { LabelText } from "./Shared";
 import styles from "./styles";
-import { STACKS } from "./stacks";
+import { AppStackParamList, STACKS } from "./stacks";
+import { StackScreenProps } from "@react-navigation/stack";
 
 function SubScreen({
   screenName,
@@ -25,7 +26,9 @@ function SubScreen({
   );
 }
 
-export default function Home({ navigation }) {
+type HomeProps = StackScreenProps<AppStackParamList, "Home">;
+
+export default function Home({ navigation }: HomeProps) {
   const handlePress = (name: string) => {
     navigation.navigate(name);
   };

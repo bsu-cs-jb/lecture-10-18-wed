@@ -202,6 +202,7 @@ export function BigButton({
         pressed ? styles.bigButtonPressed : styles.bigButtonUnpressed,
       ]}
       onPress={onPress}
+      {...props}
     >
       <LabelText>{title}</LabelText>
     </Pressable>
