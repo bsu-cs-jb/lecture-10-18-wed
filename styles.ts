@@ -23,11 +23,15 @@ const sharedStyles = StyleSheet.create({
     backgroundColor: "#33C9FF",
     borderRadius: 8,
     padding: 6,
+    justifyContent: "center",
+    alignItems: "center",
   },
   bigButtonPressed: {
     backgroundColor: "#85DEFF",
     borderRadius: 8,
     padding: 6,
+    justifyContent: "center",
+    alignItems: "center",
   },
   flexFill: {
     flex: 1,
@@ -38,10 +42,13 @@ const sharedStyles = StyleSheet.create({
     borderWidth: 1,
     padding: 7,
   },
-  scrollContainer: {
-    flex: 1,
-    alignSelf: "flex-start",
+  scrollView: {
     width: "100%",
+  },
+  scrollContent: {
+    flex: 1,
+    width: "100%",
+    gap: 10,
   },
   titleText: {
     fontSize: 32,

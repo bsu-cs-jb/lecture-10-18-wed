@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import UseContextDemos from "./UseContextDemos";
+import ModalDemos from "./ModalDemos";
 
 export interface StackDef {
   key: string;
@@ -9,9 +9,9 @@ export interface StackDef {
 
 export const STACKS: Record<string, StackDef> = {
   useContext: {
-    key: "useContext",
-    title: "useContext Demos",
-    component: UseContextDemos,
+    key: "modal",
+    title: "Modal Demos",
+    component: ModalDemos,
   },
 };
 export type AppStackParamList = {
